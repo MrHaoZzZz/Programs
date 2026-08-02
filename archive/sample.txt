@@ -1,0 +1,3 @@
+The quick brown fox jumps over the lazy dog.
+The dog, however, was not lazy at all: it chased the fox!
+Fox and dog raced through the field, and the fox won again.

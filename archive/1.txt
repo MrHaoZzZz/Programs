@@ -1,0 +1,75 @@
+北京时间
+Mon
+8:00 - 10:00
+Combinactorics L
+by Maksim
+@E2-201
+10:15 - 12:15
+Infinitesimal Calculus L
+by Ezquiel
+@E2-202
+14:00 - 16:00
+Algebra L
+by Maria
+@E2-202
+
+Tue
+14:00 - 16:00
+Infinitesimal Calculus T
+by Marina
+@E2-304
+
+Wed
+8:00 - 10:00
+Algebra L
+by Maria
+@E2-202
+10:15 - 12:15
+Infinitesimal Calculus L
+by Ezquiel
+@E2-202
+14:00 - 16:00
+System Programming L
+by Pablo
+@E2-201
+
+Thu
+10:15 - 11:15
+Infinitesimal Calculus T
+by Marina
+@E2-304
+11:15 - 12:15
+Infinitesimal Calculus Workshop
+by Marina
+@E2-304
+14:00 - 16:00
+System Programming T
+by Elisa
+@E2-201
+16:15 - 18:15
+Algebra T
+by Emmanuel
+@E2-303
+
+Fri
+11:15 - 12:15
+Algebra Workshop
+by Emmanuel
+@E2-303
+14:00 - 15:00
+Algebra T
+by Emmanuel
+@E2-303
+15:00 - 16:00
+Combinactorics T
+by Martha
+@E2-304
+16:15 - 18:15
+System Programming Lab
+by Elisa
+@E1-507
+
+以上的周课表从2026年3月2日开始，直到2026年6月15日，其中：
+2026年4月1日到2026年4月12日不上课
+2026年5月1日到2026年5月5日不上课
+2026年6月15日按照星期五的课程

@@ -1,0 +1,12 @@
+Alice 92
+Bob 78
+Carol 85
+David 45
+Eve 60
+Frank 85
+Grace 33
+Henry 71
+Ivy 92
+Jack 58
+Kate 67
+Leo 100
