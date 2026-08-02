@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Build artifacts
+*.o
+*.out
+*.class
+build/
+Debug/
+Release/
+
+# Maven
+target/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Compiled binaries
+*.exe
+*.app
+
+# Misc
+*.log

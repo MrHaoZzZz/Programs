@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main()
+{
+    int n , ans = 0 ;
+    scanf( "%d" , &n ) ;
+    while ( n != 0 ) // -> while ( n )
+    {
+        ans *= 10 ;
+        ans += n % 10 ;
+        n /= 10 ;
+    }
+    printf( "%d\n" , ans ) ;
+    return 0 ;
+}
