@@ -24,5 +24,10 @@ target/
 # Misc
 *.log
 
+# Python
+.venv/
+__pycache__/
+*.pyc
+
 # Odoo project moved to private repo MrHaoZzZz/odoo-erp
 odoo/
