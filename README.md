@@ -1,61 +1,106 @@
 # Programs
 
-个人代码仓库，按用途分门别类整理。
+Personal code repository + **Fairring Medical (飞润医疗) Odoo ERP project**.
 
-## 目录结构
+## Directory Layout
 
-| 目录 | 内容 |
+| Directory | Contents |
 |---|---|
-| `intro-to-cs/` | **Intro. to CS** 课程（C 语言） |
-| `intro-system-program/` | **Intro. to System Program** 课程（Java） |
-| `practice/` | 课外练习（洛谷、LeetCode、算法模板） |
-| `contest/` | 竞赛项目（数学建模 MCM） |
-| `teaching/` | 教学示例（C 基础） |
-| `archive/` | **ERP/Odoo 项目文档**（员工手册、流程演示、PLM 文档等，见下文） |
-| `odoo-addons/` | Odoo 模块开发工作区（学习教程 + bom_import 源码 + 工具） |
+| `odoo/` | **Odoo ERP project** (development workspace + desktop client) |
+| `archive/` | Misc historical files |
+| `contest/` | Competition material (MCM) |
+| `intro-to-cs/` | Intro. to CS course (C) |
+| `intro-system-program/` | Intro. to System Program course (Java) |
+| `practice/` | LeetCode / Luogu practice & algorithm templates |
+| `teaching/` | Teaching examples (C) |
 
-## ERP / Odoo 项目（archive/）
+---
 
-公司 ERP（Odoo 19）相关文档，MD 与截图放在 `archive/` 根目录（保持相对路径可预览）：
+## Odoo ERP Project (`odoo/`)
 
-- `ERP操作手册-普通员工.md` / `.pdf` — 员工操作手册（56 张截图在 `screenshots/第X章-*`）
-- `PLM+ERP完整流程演示.md` — 研发→量产→生产→出货→归档 全流程演示
-- `产品全生命周期操作流程.md` — 研发/量产/停产 操作流程
+Company ERP for **Shenzhen Fairring Medical Technology Co., Ltd.**, built on **Odoo 19** (docker), plus a desktop client and a remote-development tunnel.
 
-`archive/` 子目录：
+### What we did so far
 
-| 目录 | 内容 |
+| Area | Status |
 |---|---|
-| `流程与表单/` | DHR 批记录流程（xlsx/纯文本）、销售订单评审表、PLM 概念与工作流文档 |
-| `学习资料/` | Odoo 插件开发教程（BOM 导入为例）+ 源码、作业 |
-| `旧文件/` | 与 ERP 无关的历史/课程文件（保留备查） |
-| `screenshots/` | 各文档的截图（第X章、产品生命周期、流程-ERP） |
+| **OA workflows** | 57 approval flows (oa_base + 6 dept modules: hr/fin/scm/qa/rd/asset), approval chains, add-sign / transfer / delegate / return |
+| **PLM rebuild** | Strict **Stage-Gate TR0–TR4** (aligned to FR-QP-019), DHF 52-doc checklist, traceability matrix, DMR aggregate, graded design change (A/B/C), doc control (external files) |
+| **UI/UX** | Global theme (`ui_theme`), ERP home dashboard, required-field asterisks, save/close text buttons, standard chatter |
+| **Desktop client** | Electron app (`odoo/desktop/`), UA+token gated, versioned setup archives |
+| **Remote dev tunnel** | Tailscale (TUN mode) + SSH — Mac can drive WSL directly, no public IP exposed |
 
-## 课程项目
+### Structure
 
-### intro-to-cs/ (Intro. to CS, C 语言)
+```
+odoo/
+├── development/
+│   ├── addons/            # module dev workspace (bom_import + tools)
+│   ├── diagnostics/       # playwright diagnostic scripts
+│   ├── docs/              # design-docs / handoff / manuals / report / requirements / screenshots
+│   └── odoo-remote-verify.py   # XML-RPC read-only verification script
+└── desktop/               # Electron desktop client
+```
 
-- `problem-sets/` — 26 道编程题（Leap Year, Roots, FizzBuzz, Sorting 等）
-- `pa1-firefighter/` — PA1: 无人机消防模拟
-- `pa2-gauss-jordan/` — PA2: 高斯-约当消元 / 交通规划
-- `image-processing/` — 图像处理项目
-- `calendar-tool/` — 日历工具（validate/shift/diff/weekday/workdays/monthcal）
+### Environments (docker on WSL)
+
+| Container | Purpose | Port | DB | Auth |
+|---|---|---|---|---|
+| `odoo19-odoo-1` | production + demo | 8081 (nginx) | `odoo19`, `odoo19_demo` | admin/admin |
+| `odoo19-odoo-test-1` | test | 8082 (nginx) | `odoo19_test` | admin/admin |
+| `odoo19-db-1` | Postgres 15 | 5432 | all | odoo/odoo |
+| `odoo19-nginx-1` | reverse proxy | 8080/8081/8082 | — | — |
+
+> Production DB `odoo19` (8080) requires request headers `User-Agent: OdooDesktopClient` + `X-Odoo-Client: <token>`; plain browser/curl returns 403.
+
+### Remote development (Tailscale + SSH)
+
+Tailnet nodes:
+
+| Node | Tailnet IP | Notes |
+|---|---|---|
+| `mr-haozis-macbook-air` (Mac) | 100.117.50.11 | Tailscale TUN mode, auto-starts via LaunchDaemon |
+| `engineer7` (Windows host) | 100.94.10.40 | OpenSSH → PowerShell (port 22), portproxy 2222 → WSL |
+| `wsl-odoo` (WSL2 Ubuntu 22.04) | 100.75.79.122 | Odoo dev machine (root sshd) |
+
+Connect from the Mac (`~/.ssh/config` already configured):
+
+```bash
+ssh wsl                                  # → WSL bash (root), 100.94.10.40:2222 → wsl-odoo:22
+ssh Administrator@100.94.10.40          # → Windows PowerShell (port 22)
+```
+
+- All traffic goes over the Tailscale WireGuard tunnel — **no public IP exposed**.
+- WSL dev: read source / git / docker / odoo shell via `ssh wsl "..."`.
+- Windows ops: firewall / services / registry via `ssh Administrator@100.94.10.40 "..."` (or from WSL: `powershell.exe -NoProfile -Command '...'`).
+
+---
+
+## Course Projects
+
+### intro-to-cs/ (Intro. to CS, C)
+
+- `problem-sets/` — 26 exercises (Leap Year, Roots, FizzBuzz, Sorting, ...)
+- `pa1-firefighter/` — PA1: drone firefighting simulation
+- `pa2-gauss-jordan/` — PA2: Gauss-Jordan elimination / traffic planning
+- `image-processing/` — image processing project
+- `calendar-tool/` — calendar utilities (validate/shift/diff/weekday/workdays/monthcal)
 
 ### intro-system-program/ (Intro. to System Program, Java)
 
-- `exercises/` — 课程练习（`sys/` 含各章节练习与模拟题，`java_final/` 为期末文件 IO 练习）
-- `arithmetic-interpreter/` — 算术表达式解释器（Spring Boot）
-- `isp-reversi/` — 黑白棋（Reversi）游戏（Spring Boot）
+- `exercises/` — course exercises (`sys/`, `java_final/`)
+- `arithmetic-interpreter/` — arithmetic expression interpreter (Spring Boot)
+- `isp-reversi/` — Reversi game (Spring Boot)
 
-## 课外
+## Extras
 
-- `practice/luogu/` — 洛谷刷题，按题号分目录（C++），`UVA10696` 为 Java
-- `practice/templates/` — 算法模板（素数、搜索）
-- `contest/mcm-2025/` — 2025 数学建模竞赛材料
+- `practice/luogu/` — Luogu problems by id (C++), `UVA10696` in Java
+- `practice/templates/` — algorithm templates (primes, search)
+- `contest/mcm-2025/` — 2025 MCM materials
 
-## 构建说明
+## Build Notes
 
-- C 项目用 `make`（`intro-to-cs/` 下各项目自带 Makefile）
-- Java 项目用 Maven：`./mvnw spring-boot:run`（无需 JDK 全局安装，wrapper 自动下载）
-- `teaching/` 直接 `gcc 文件名.c -o 输出` 编译
-- Luogu 单文件：`g++ 1.cpp -o 1`
+- C: `make` (Makefiles under `intro-to-cs/`)
+- Java: `./mvnw spring-boot:run` (wrapper auto-downloads JDK)
+- `teaching/`: `gcc file.c -o out`
+- Luogu single file: `g++ 1.cpp -o 1`
