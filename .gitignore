@@ -23,3 +23,6 @@ target/
 
 # Misc
 *.log
+
+# Odoo project moved to private repo MrHaoZzZz/odoo-erp
+odoo/
