@@ -2,8 +2,6 @@
 
 Personal code repository: coursework, practice, and teaching examples.
 
-> The Odoo ERP project used to live here but has moved to a **private repo** (`MrHaoZzZz/odoo-erp`) — see the project's own Chinese README there.
-
 ## Directory Layout
 
 | Directory | Contents |
