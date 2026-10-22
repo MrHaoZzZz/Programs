@@ -1,0 +1,1 @@
+std::string firefighter( std::vector<int> base , std::vector<int> target , int battery , int distance , std::string plan ) ;

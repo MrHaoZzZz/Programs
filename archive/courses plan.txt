@@ -1,0 +1,36 @@
+semester 1
+extended
+BCM: 2.5
+INT to CS: 4 (fucked)
+english B: 3
+tot: 5.5
+
+semester 2
+algebra a: 5.5 (drop)
+infi 1: 5.5 (fail)
+combi: 2.5
+isp: 4
+tot: 6.5
+
+semester 3
+INT to CS (retake): 4
+algebra A (retake): 5.5
+infi 1 (retake): 5.5
+Data structure: 3
+tot: 18
+
+semester 4
+algebra B: 5
+infi 2: 5
+digital system: 5
+combi algorithm: 3.5
+English GE: 2
+tot: 20.5
+
+semester 5
+infi 3: 5
+computer organization: 3
+set: 2.5
+prob: 3.5
+
+

@@ -1,0 +1,29 @@
+MON.
+INT. to CS L (Valentin): 8:00 - 10:00 @E2-304
+Algebra A (Paulo): 10:15 - 12:15 @E2-402
+Data Structure 1 (Hernan): 16:15 - 18:15 @E2-307
+
+TUE.
+INT. to CS T (Martha): 10:15 - 12:15 @E2-307
+Infinitesimal Calculus L (Leandro): 14:00 - 16:00 @L-110
+Infinitesimal Calculus T (Ivan): 16:15 - 17:15 @E2-201
+INfinitesimal Calculus T (Ivan): 17:15 - 18:15 @E2-201
+
+WED.
+INT. to CS Lab (Martha): 8:00 - 10:00 @E1-506
+Data Structure T (Herman): 8:00 - 9:00 @E1-503
+Data Structure Lab (Herman): 9:00 - 10:00 @E1-503
+Algebra A (Paulo): 10:15 - 12:15 @E2-402
+
+THU.
+Algebra A Workshop (Ana): 10:15 - 11:15 @E2-211
+Infinitesimal Calculus L (Leandro): 14:00 - 16:00 @L-110
+Algebra A T (Ana): 16:15 - 18:15 @E2-211
+
+FRI.
+Algebra A T (Ana): 8:00 - 9:00 @E2-211
+Infinitesimal Calculus T (Ivan): 10:15 - 11:15 @E2-201
+Infinitesimal Calculus Workshop (Ivan): 11:15 - 12:15 @E2-201
+
+Starts on Oct.12, 2026 and ends on Jan.11, 2027
+Jan.1, 2027 is on holiday and Jan.11, 2027 gose by schedule of Friday
